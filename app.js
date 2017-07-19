@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-let wordbuzz= {};
+let word = { buzzwords: [] };
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:false}));
@@ -10,20 +10,23 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.render('index.html');
+  console.log(res.body);
 });
 
 
 app.get('/buzzwords', (req, res) => {
-  console.log(res.body);
+  res.json(word);
+  console.log(res.url);
 });
 
-app.post('/buzzword', (req, res) => {
-  res.send(req.body);
-  console.log(res.body);
+app.post('/buzzword/points', (req, res, next) => {
+  //res.send(req.body);
+  console.log(req.body.buzzword);
+  next();
 
 });
 
-app.put('/buzzword', (req, res) => {
+app.put('/buzzword', (req, res, next) => {
 
 });
 
