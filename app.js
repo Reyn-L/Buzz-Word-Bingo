@@ -37,17 +37,18 @@ app.post('/buzzword', (req, res) => {
 
 });
 
-app.put('/buzzword', (req, res) => {
+// app.put('/buzzword', (req, res) => {
 
-});
+// });
 
 // app.delete('/buzzword', (req, res) => {
 
 // });
 
-// app.post('/reset', (req, res) => {
-
-// });
+app.post('/reset', (req, res) => {
+  word = { buzzwords: [] };
+  res.send(pass);
+});
 
 
 const server = app.listen(8080, () => {
